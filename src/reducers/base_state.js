@@ -4,8 +4,12 @@ export const baseState =
             message:"Hello",
             players:{
                 player1:{
-                    name:"bob",
-                    weapon:"knife"
+                    name:"",
+                    weapon:""
+                },
+                player2:{
+                    name:"",
+                    weapon:""
                 }
             }
         }
