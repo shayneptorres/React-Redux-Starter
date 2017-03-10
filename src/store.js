@@ -17,7 +17,6 @@ export function configureStore(uninitializedStore, initialState, { sagas = [] }=
   return store;
 }
 
-console.log(baseState)
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 const store = configureStore(reducers,baseState);
 export default store

@@ -1,27 +1,41 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+
+import {updatePlayerName} from "../actions/player_action";
 
 class PlayerInfo extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
+        this.onButtonClick = this.onButtonClick.bind(this);
+    }
 
+    onButtonClick(event){
+        this.props.updatePlayerName("Shayne");
     }
 
     render() {
         return (
             <div>
                 <h1>Player Info</h1>
-                {console.log(this.props.base_state)}
-                <h2>{this.props.base_state.base_state.message}</h2>
+                <h2>name: {this.props.store.base_state.players.player1.name}</h2>
+                <h2>weapon: {this.props.store.base_state.players.player1.weapon}</h2>
+                <button 
+                onClick={this.onButtonClick}
+                className="btn btn-success">Change</button>
             </div>
         );
-    }    
+    }
 }
 
 function mapStateToProps(state){
     return {
-        base_state: state
+        store: state
     }
 }
 
-export default connect(mapStateToProps)(PlayerInfo);
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({updatePlayerName},dispatch)
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(PlayerInfo);
