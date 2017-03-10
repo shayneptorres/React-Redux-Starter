@@ -10,11 +10,22 @@ class App extends Component {
     return (
       <Router history={hashHistory}>
         <Route path="/" component={Home} />
+        <Route path="/battle" component={Battle} />
       </Router>
     );
   }
 }
 
-const Home = () => <div className="App"><PlayerInfo /></div>
-
+const Home = () => (
+  <div className="App">
+    <PlayerInfo />
+    <Link to="/battle">Let's Battle</Link>
+  </div>
+)
+const Battle = () => (
+  <div className="App">
+    <h2>Here is where the battle will go</h2>
+    <Link to="/">Back to set up</Link>
+  </div>
+)
 export default App;
